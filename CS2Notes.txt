@@ -1,0 +1,1434 @@
+------------------------------------------------------------------------------------------------------
+Admin Info:
+------------------------------------------------------------------------------------------------------
+Professor: Chung In Jeung
+Office: 101B MLH
+    Hours: 2:00 - 2:50
+Lecture Notes: http://iis.korea.ac.kr
+    Click Lectures
+    Click [2015] UI D.S.
+Email: ijchung@uiowa.edu
+     : chung@korea.ac.kr
+Phone: 319 335 0737
+Class: MTWTh
+       10:30 - 11:40
+
+TA: 
+Email: talal-riaz@uiowa.edu
+Phone: 319 936 5287
+
+Text Book: Savitch
+
+Important Dates:
+    Midterm 1: July 2nd  (Thur) 
+    Midterm 2: July 23rd 
+    Final Exam: August 6th
+
+    HW1 due June 29
+------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------
+Course Info:
+------------------------------------------------------------------------------------------------------
+C++
+
+OOP with classes
+
+Precondition/Postcondition
+
+Complexity:
+    Time complexity
+    Space complexity
+
+Linear Data Structures: List, Stack, Queue
+
+Non-Linear Data Structure: Tree
+    Binary search tree
+    Full Binary Tree
+    Complete Binary Tree
+    Heap tree
+    AVL Tree
+    B Tree
+    B+ Tree
+    ...
+
+Grand Theory:
+    Dijkstra Algorythm
+    Minimum Spanning Tree
+    Kruksal Algorythm
+
+Hash
+
+3 Assignments
+4 - 5 Programming assignments
+    2 weeks each
+
+C++ Syntax:
+    Bag 
+    Container 
+    OOP
+
+------------------------------------------------------------------------------------------------------
+Notes:
+------------------------------------------------------------------------------------------------------
+
+15 June
+------------------------------------------------------------------------------------------------------
+Specification of program:
+
+    Precondiiton:
+        Conditions that must be true to enter program
+
+    Postcondition:
+        Conditions that must be true to exit program
+
+16 June
+------------------------------------------------------------------------------------------------------
+Algorithm:
+
+    An abstract form of a program
+    A program is the complete form of an algorithm
+
+    Program = algo + d/s
+    algo = logic(what) + control(how)
+    algo: finite set of instructions which accomplish a given
+          particulat task (abstract form of pgm)
+    d/s: data structure
+
+
+    y = f(x)
+        y    -> output
+        f(x) -> algorithm
+        x    -> input
+
+Specification:
+    Precondition:
+        C++ : assert()
+        e.g.: assert(input >= 0)
+
+        if i is positive, then program continues
+        else, i is non-positive, then print error mesage, e.g., assertion statement failed at line 94
+
+    Postcondition:
+        NSE -> No Side Effect: No change in specified variable at the end of the program
+
+Data Types:
+
+    Primitive data types:
+        int, float, char, bool
+
+    Data Abstraction: Once the variable is defined, then the user does not need to know
+                      how it is represented in a computer system (C/S)
+                      This way, the programmer does not need to worry about the bits of a variable
+
+    Kinds of data of vars for a Programing Language
+
+    FORTRAN: int, real, logival complex double precision
+             Weakly typed PL
+
+    C++, Java, etc: Strongly typed PL
+
+    Eniac:  1946
+        in 1950's FORTRAN 1 was invented            
+
+    Weakly Typed:
+        Data types do not need to be declared before use
+        Converts unrelated data types implicitly
+
+    Strongly Typed:
+        Each data type should be predefined at the head of the program
+
+    typedef allows a programmer to define a data type
+
+    Aggregated Data Type:
+        struct
+        class
+
+Divide and Conquer Method: Split a large problem into smaller problems
+    Hanoi Tower Problem
+
+Specification: Define the problem to be solved by C/S clearly and definitely
+               give precondtion and postcondition.
+
+Constructor: Method to create a new object
+
+
+Class consists of private and public members.
+    private:
+        // Accessible only by methods within the same class
+        // Variables should be private
+    public:
+        // Accessible to everyone
+        // Methods are public
+
+Abstract Data Type:
+    Set of operations with data object
+
+Key Points:
+    Data Abstraction:
+        Information hiding
+        Encapsulation
+        ADT
+
+
+17 June
+------------------------------------------------------------------------------------------------------
+Thinking Machine
+
+Traveling Salesman Problem:
+    Time complexity of O(2^n * n^2)
+        If n is very large, then the problem is too complex for a computer to solve.
+        It would take too much time for a computer to solve it.
+
+Time Complexity:
+    O(n)   Linear     |
+    O(n^2)            | Polynomial Time Complexity
+    O(n^3)            |
+
+    O(2^n) Exponential
+    O(n!)  Factorial
+
+
+18 June
+------------------------------------------------------------------------------------------------------
+Time Complexity:
+    f(n) = O(g(n)) if there exists 2 constants
+    c and n, such that: 
+
+
+        f(n) = O(g(n))      if ... f(n) <= c * g(n)
+        n > n0
+
+        f(n) = Omega(g(n))  if ... f(n) >= c * g(n)
+
+
+    Standard Complexity { O }:
+        Cheapest
+            O(k) or O(1) : Constant complexity
+            O(n)         : Linear complexity
+            O(n Log n)   
+            O(n^2)
+            O(n^3)
+            ...
+            O(2^n)       | NP-hard Problems
+            O(n!)        |
+            ...
+        Most Expensive
+
+
+
+    g(n) = (1/5) n^3 + 100000000000 n^2 + 200000 n
+           ---------
+
+    n^3 has the highest growth rate, thus g(n) = O(n^3)
+    Coeficients are ignored
+
+    for( i=0; i<n; i++ ) a[i] = 0; // -> O(n)
+
+
+    for( i=0; i<n; i++ ) a[i] = 0; 
+        for( j=0; j<n; j++ ) a[i] += a[j] + i + j; // -> O(n^2)
+
+    int fibo( int n ){
+        if( n <= 1 ) return 1;
+        else return ( fibo( n-1 ) + fibo( n - 2 ) ); 
+    }
+
+
+    #1  if n = 0 || 1, T(0) = T(1) = 1; // constant doesn't matter
+    #2                 T(n) = T(n - 1) + T(n - 2) + 2 // +2 because if n is >= 2, 
+                                                      // then statement #1 must be excicuted
+
+    Since fibo(n) = fibo(n-1) + fibo(n-2)
+        T(n) >= fibo(n)
+
+    It's known that:  (3/2)^n <= fibo(n) < (5/3)^n
+
+    O(2^n) = O(3^n)
+
+
+
+    Omega time complexity
+        def: f(n) = Omega(g(n)) if there exists c & n0 such that f(n) >= c * g(n)) for all n >= n0
+
+
+    j = 1;
+    while( j <= n ) { 
+        call A; 
+        j = b * j; 
+    }
+
+    T > log2 (n)
+    O( log10 (n) ) = ( log2 (n) ) = O( ln(n) ) = O( logb (n) )
+
+    // O(n) time complexity
+    for( i = 0; i < n; i++ ){
+        if( a[i] == k ) return 1;
+    } 
+
+    // O(n^2) time complexity
+    for( i = 0; i < n; i++ )
+        for( j = 0; j < n; j++ ) b[i][j] *= c;
+
+
+    Binary search ->  O(ln n)
+    Linear search ->  O(n)
+    Merge sort    ->  O(n log(n) )
+    Bubble sort   ->  O(n^2)
+
+
+*********************************************************
+*    Array                   |                          *
+*    List:                   |                          * 
+*        linked list         |  Linear data structures  *
+*        sequential list     |                          * 
+*    Stack                   |                          * 
+*    Queue                   |                          * 
+*********************************************************
+*    Tree                    |  Non-Linear              *
+*    Graph                   |  Data Structures         *
+*********************************************************
+
+    Array: Data structure where all members have the same data type
+        1 dimensional array
+
+        multi dimensional array
+    
+    Bag:
+        Static Bag:
+            Size is determined at compile time
+            
+        Dynamic Bag:
+            Size is determined during program exicution
+            More efficient in terms of space
+
+    Pointer: memory adress of variable        
+
+        Bit: 1 or 0
+        Byte: 8 bits
+        Word: size of bus between memory and cpu
+              typically 4 bytes, or 32 bits, but depends on specific hardware
+
+        The address of a pointer is the adress of the byte where it is stored
+
+
+22 June
+------------------------------------------------------------------------------------------------------
+
+*********************************************************
+// pointerExample.cpp
+#include <iostream> 
+
+int main(){
+
+    int a, b;
+    int *p1, *p2;
+
+    a = 10;
+    b = 20;
+
+    p1 = &a; // *p1 == 10;
+    p2 = &b; // *p2 == 20;
+
+    *p2 = *p1; // *p2 == 10;
+
+    std::cout << "*p1 == " << *p1 << std::endl;
+    std::cout << "*p2 == " << *p2 << std::endl;
+    
+    return 0;
+}
+/* Output: *p1 == 10
+ *         *p2 == 10
+ */
+*********************************************************
+Representation of multi-dimensional array
+    Row-Wise Representation
+        Row n occupies a contiguous memory block
+        
+    Column-Wise Representation
+        Column n occupies a congtiguous memory block
+
+new operator: reserves a memory space for a dynamic variable from the heap space
+
+delete operator: returns the reserved memory space to the heap available space so 
+    that the memory can be used for the other programs (effeciency of memory)
+
+
+23 June
+------------------------------------------------------------------------------------------------------
+Integer: 32 bits (4 bytes)
+    1 bit signed
+    7 bit exponent
+    24 bit mantissa
+
+*********************************************************
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+    int *p1, *p2;
+
+    p1 = new int;
+    p2 = new int;
+
+    *p1 = 100;
+    *p2 = 200;
+
+    cout << *p1 << " and " << *p2 << endl; // 100 and 200
+
+    delete p1;
+    p1 = p2;
+    cout << *p1 << " and " << *p2 << endl; // 200 and 200
+
+    p1 = 300;
+    cout << *p1 << " and " << *p2 << endl; // 300 and 300
+
+    return 0;
+}
+*********************************************************
+
+A pointer as a parameter of a function
+
+    #include <iostream>
+
+    void example(float* ptr){
+        *ptr = 10.0;
+    }
+
+    int main(){
+
+        float *mptr;
+        mptr = new float;
+
+        example( mptr );
+
+        return 0;
+    }
+
+Array:
+
+    int x[5][10];
+        number of elements = 5 * 10 = 50
+        number  of bytes per int = 4
+        number  of bytes this array occupies    
+
+    int a[100];
+
+    a[i]
+    spans from 0 to 99
+    default low index: 0
+    default upper index: 99
+
+    int a[-5,,10]
+    16 members, 64 bytes    
+
+    int a[-10...40];
+    4 * 51 = 204 bytes
+
+    address of a[i] = address of starting element + space inbetween
+    (i - l) elements
+    each element takes k bytes
+
+    (i - l) * k = size of memory from location i to l
+
+    int x[40]; == int x[0,,39];
+    size of x = (39 - 0 + 1) * 4 = 160 bytes
+
+    double float a[-5,,30];
+    size of a = (30 - (-5) + 1) * 8 = 288 bytes
+
+    1) Row-wise representation
+    2) Column-wise representation
+
+    int x[-5,,10][10,,50]
+    4 bytes per int
+
+    size of x = 4 bytes per int * 440 elements = 1760
+
+
+
+    int a[ l1,,u1 ] [ l2,,u2 ]
+
+    address of a[i,j] = address of a[l1, l2] + (i - l1) * (u2 - l2 + 1) * k + (j - l2) * k
+
+
+24 June
+------------------------------------------------------------------------------------------------------
+Array: int x[l1 ,, u1] [l2 ,, u2]
+    
+    address of x[i][j]
+
+    Find memory space of first row: (u2 - l2 + 1)
+    Number of bytes of first row: (u2 - l2 + 1) * k
+
+    Find number of rows before x[i][j]: (i - l1)
+
+    Number of bytes before x[i][j]: (u2 - l2 + 1) * k * (i - l1)
+
+    Starting address: x[l1][l2] = SA
+
+
+    Number of elements in row i before x[i][j]: (j - l2)
+        Number of bytes: (j - l2) * k
+        
+    Address of x[i][j]: SA + (u2 - l2 + 1) * k * (i - l1) + (j - l2) * k
+    Address of x[i][j]: x[l1][l2] + (u2 - l2 + 1) * k * (i - l1) + (j - l2) * k
+                        starting     ^
+                        address    max
+                                   size     
+
+List: linear data structure   
+    Sequential List:
+        Consecutive set of memory locations with the form of a0, a1, ... , an
+        List of size 0 = null list (i.e., n = 0)
+
+        Element(node) a[j+1] follows (succeeds) a[j] (0 <= i <= n-1) and a[j] precedes a[j+1]
+
+        Sequential list can be regaurded as a 1 dimensional array
+
+    Linked list:
+                  node
+        |Info       |Link       |->
+        |           |           |
+
+        Opporations on list:
+            Find size of list
+            find i-th node of the list
+            replaze i-th node of the list
+            read the items of the list from left to right
+            insert a new item in the i-th position
+            delete an item in the i-th position
+            split a list into 2 or more lists
+            ...
+
+        First Node: Head Node
+        Last Node: Tail Node    
+
+        -1 cannot be a physical address of the main memory.
+        Null Pointer will be some negative integer number.    
+
+        class node{
+            public: 
+                typedef int value_type;
+            private: 
+                value_type data;
+                node *link;
+        };
+
+        node *head_ptr;
+        node *tail_ptr;
+
+        if( head_ptr == NULL ) then empty_list;
+
+        Note: 
+            Node constructor initializes the data field and link field
+
+        Node Constructor:
+            node( const value_type& ini_data = value_type(), 
+                  const node* init_link = NULL );
+
+        Example:
+            p = new node; // p points to a new node 
+            q = new node(1.0); // NULL is given as the default parameter for the method: node
+                               // Not allowed in older versions of C++
+            r = new node(2.0, p);
+            
+            p ---> | 0   | NULL |
+                   |     |      |
+
+            q ---> | 1.0 | NULL |
+                   |     |      |
+
+            r ---> | 2.0 | p    |
+                   |     |      |
+25 June
+------------------------------------------------------------------------------------------------------
+Sequential List:
+
+    1D array
+
+    node ai is the predecesor of ai+1
+    ai+1 is the successor of ai
+
+    Uses less memory, because it does not require the extra information to link nodes
+    Data is stored consecutively in main memory
+
+Linked List:
+
+    example:
+    class node{
+        public: 
+            typedef float value_type;
+        private:
+            value_type data;
+            node *link;
+    };
+
+    p = new node; // not allowed in old implementations of C++
+    q = new node(1.0);
+    r = new node(2.0, p); // points back to the original node (p)
+
+    struct ~ class:
+        Every field in struct is visible
+        The only viable members of class are the ones in private
+
+
+    new: allocates memory during program excicution (as opposed to when the program is compiled)
+    delete: frees memory
+
+    float p; // p points to nothing
+    p = new float; // p points to newly allocated variable of type float
+    *p = 10.0; // the new float variable contains the value 10
+
+    p -> |_|__|__________|
+   
+    54.8 = + (0.xxxxxx) * 16 
+           ^      ^       ^  
+        signed mantissa  exponent
+         bit
+
+
+    node* head_ptr = new node(1.0, NULL)
+    head_ptr       = new node(2.0, head_ptr);
+    head_ptr       = new node(3.0, head_ptr);
+    head_ptr       = new node(4.0, head_ptr);
+
+    head_ptr -> |4.0|__| -> |3.0|__| -> |1.0|__| -> NULL
+
+
+For homework:
+
+    P(x) = -5x^6 + 2x^3 - 5x - 3
+    Q(x) = 7x^6 - 2x^5 + 3x^3 + 5x - 9
+   +__________________________________
+    S(x) = 2x^6 - 2x^5 + x^3 - 12
+
+for P(x)
+p -> |-5|6|_|-> |2|3|_|-> |-5| 1|_|-> |-3|0|NULL| 
+
+
+Parameters to Linked List functions:
+
+    Case 1:
+        if a function has a parameter of pointer variable and there does 
+        not exist chang of the nodes on the LL, use a pointer to a 
+        constant node, i.e: const node*
+
+    Case 2:
+        if a funciton has a parameter of pointer variable and the function 
+        may make the pointer point to a new node, use node*&
+
+    Case 3:
+        if a function has a parameter of pointer variable and it does not 
+        need to make the pointer point to a new node, use node*
+
+30 June
+------------------------------------------------------------------------------------------------------
+
+Doubly linked list:
+    lLink: left link
+    rLink: right link
+
+    If only one node, then both lLink and rLink point to the data of that node    
+
+    Pros:
+        Traditional linked lists can only be traversed in one direction.
+    Cons: 
+        Extra memory cost
+        Extra execution cost to change both lLink and rLink
+
+
+    class doubly_ll{
+        public:
+            typedef ____ value_type;
+            void set_data(const value_type& new_data);
+            void set_llink(node* new_llink);
+            void set_rlink(node* new_rlink);
+        private:
+            value_type data_field;
+            node* lLink;
+            node* rlink;
+    };
+
+
+
+Questions on page 23 of PP #4
+    1) If frequent access to nodes in the list, use:
+        Sequential List: access time is constant (linear for linked list)
+
+    2) If frequent resizing is needed:
+        Linked List
+
+    3) If frequent insertion into the middle of the list, use:
+        Linked List
+
+    4) If frequent deletion from middle of the list, use:
+        Linked List
+    
+    5) If operations occur at a cursor, use:
+        Linked List
+
+    6) If operations occur at a 2-way cursor, use:
+        Doubly Linked List
+
+    7) If the number of nodes(items) is large, use:
+        Sequential List
+
+BNF: Backus-Naur Form
+
+
+30 June
+------------------------------------------------------------------------------------------------------
+BNF: Backus-Naur Form
+    Context Free Grammer
+    < > Nonterminal (variable)
+    a | b | c | ...   | Terminals 
+    0 | 1 | 2 | ...   |
+
+    b * c + d
+
+    <expression> ::= <term> + <term> | <term> - <term> | <term> 
+
+    <term ::= <factor> * <factor> | <factor> / <factor> | <factor>
+
+    <factor> ::= <(<expression>) | <letter> | <digit> 
+
+
+        <e> -> <t> + <t>
+            -> <f> * <f> + <t>
+            -> <l> * <f> + <t>
+            -> b * <f> - <t>
+            -> b * <l> + <t>
+            -> b * c + <t> 
+            -> b * c + <f>
+            -> b * c + <l>
+            -> b * c + d
+
+    Grammar:
+        G = <V, T, P, S>
+
+Exam 1 Preparation:
+    - OOP
+    - Abstract Data Type
+    - Time Complexity
+    - List:
+        Sequential
+        Linked
+    - Compute Address of elements of array
+    - Dynamic Variable
+    - Static Variable 
+
+f(n) = O(g(n)) if there exists n0 such that f(n) >= c(g(n)) for all n >= n0 
+
+
+Hanoi Tower Problem:
+
+
+6 July
+------------------------------------------------------------------------------------------------------
+Stack: LIFO -> Last In First Out
+    Linear Data Structure
+
+    Implemented with:
+        1D Array or Linked List
+
+    All opperations occur at one end, the top
+
+    Member functions:
+        push() // insert node to top of stack
+        pop() /* remove node from top, delete and return    
+                 aka: delete, remove, pop */  
+
+    RTS: Run Time Stack
+    PSN: Polish String Notation
+
+    Stack Underflow: When a node is deleted from an empty stack
+    Stack Overflow: When a node is added to a full stack
+
+    A stack is used for:
+        infix -> postfix
+                 prefix
+
+    Applications of Stack
+        Interrupt Handling
+        Procedure (function: subroutine) processing
+        PSN (Polish String Notation) conversion
+        ...
+
+(used for second programing assignment)
+Polish String Notation:
+    5 + 6  // infix notation/arithmetic expression        
+   +5   6  // prefix notation  | Polish String Notation 
+    5   6+ // postfix notation | No need for parenthasies
+
+    Infix:
+        5 + 6 * 7 /(4 + 9) - (7 + 9)
+    PSN: 
+
+    Precendence of op.
+        max: (uppward arrow)
+             *, /
+        min: +, -
+
+
+    Post fix notation using stack:
+        A  B  C  D + E * + F + *
+        
+        Each element gets pushed into the stack. When a binary opperator is reached,
+        The top two elements are popped, and have that opperation performed on them.
+        The result is then pushed onto the top of the stack.
+
+    (found in lecture notes PDF #5)
+    Convert a fully parenthesized infix expression into a postfix expression:
+      1 add ‘#’ at the end of postfix notation
+      2 scan the input symbol α from the input string.
+      3 while (α ≠ ‘#’) do { 
+            if (α = operand), put α onto stack S
+            if (α = operator) { 
+                pop up 2 items from stack S;
+                evaluate these two popped items with the operator α;
+                // top item would be the 2 nd operand
+                // next top item would be the 1 st operand
+                put the evaluation result onto stack S;
+            } // end of if-loop
+        } // end of while loop
+        ISP (in stack priority) 
+        ICP (in coming priority)
+
+        |Symbol|ISP|ICP
+        |  )   |   |    // right paren
+        |  ^   |3  |4   // exponent
+        | * /  |2  |4   // multiply, divide
+        | + -  |2  |2   // add, subtract
+        |  (   |0  |4   // left paren
+        |  #   |-1 |    // bottom of stack
+
+    Example: (convert infix to postfix)
+        Example in presentation #5 page 14
+        a/(b + c) * d  -->  a b c + / d * 
+        
+Programming Problem 2:
+    1) convert infix expression into postfix expression
+    2) Evaluate the above postfix expression
+
+Parse Tree
+Post Order Traverse
+
+Queue:
+    A collection of items (nodes) where items are inserted at one end (rear) 
+    and deleted from the opposite end (front)
+
+    Note: Just like aiting in line. FIFO (First In First Out)
+
+    Operations: void push(const node& entry)
+                void pop()
+                bool is_empty() const
+                size_type size() const
+                node FRONT() const // returns front node without deleting it
+
+Recursion:
+    Process of solving a problem by solving smaller problems of the same type
+    
+    
+8 July
+------------------------------------------------------------------------------------------------------
+Hanoi Tower Problem: Move each disk to from the Source to the Destination, cannot place
+                     a larger disk ontop a smaller disk
+
+    Source      Middle      Destination
+     Peg A       Peg B         Peg C
+     *||*         ||            ||
+    **||**        ||            ||
+   ***||***       ||            ||
+  -----------------------------------
+
+
+Move n disks from peg A to peg C, using peg B as an intermediary
+    1) Move (n-1) disks from source peg to the middle peg (From A to B) (Requires many opperations)
+
+     Peg A       Peg B        Peg C
+      ||          ||            ||
+      ||         *||*           ||
+   ***||***     **||**          ||
+  -----------------------------------
+
+    2) Move largest disk from A to C
+        (Primative opperation, only 1 step to solve) 
+     Peg A       Peg B        Peg C
+      ||          ||            ||
+      ||         *||*           ||
+      ||        **||**       ***||***
+  -----------------------------------
+
+    3) Move disks from B to C
+     Peg A       Peg B        Peg C
+      ||          ||           *||*
+      ||          ||          **||**
+      ||          ||         ***||***
+  -----------------------------------
+
+/* Function Prototype */
+HTP( int n, char startPeg, char middlePeg, char endPeg );
+
+    1) HTP( n-1, startPeg, endPeg, middlePeg )
+    2) Move the largest( only one ) disk from startPeg to endPeg
+    3) HTP( n-1, middlePeg, startPeg, endPeg)
+
+Activation Record: AR
+    - List of parameters
+    - Return Address
+    - Location of next instruction to execute after returning to the calling program
+
+    When a funciton is called, the activation record is inserted to the stack, when
+    the function has been executed, the AR is then removed from the stack
+
+    f(int n){
+        if( n == 0) { return 1; }
+        else { return n * f(n-1); }
+    }
+
+    RTS
+    | f(0)   | AR
+    | f(1)   | AR
+    | f(2)   | AR
+    | f(3)   | AR
+    | main() | AR
+    
+
+RTS: Run Time Stack
+    | list of parameters |
+    | RA                 |
+    | extra information  |
+
+
+9 July
+------------------------------------------------------------------------------------------------------
+A.I. Class: languages: LISP, Prolog
+
+Tree:
+    A type of graph
+    G = (v, E)
+        V: Set of vertices (nodes)
+        E: Set of arcs (edges)
+
+Undirected Graph:
+    (A)---(B)
+   /  \    |
+  |   |    |
+  (E) (C) (D)
+
+Digraph (Directed Graph)
+
+Outdegree: (of node a)
+    # of arcs which originate at node a
+
+Indegree: (of node a)
+    # of arcs which terminate at node a
+
+Binary Tree:
+    (1) Empty
+    (2) 1) There exists the root node
+        2) Except root, all nodes should have only one parent
+        3) Every node should have at most 2 children
+
+    Case 1:
+        Terminal Node (No child)
+
+    Case 2:
+        Only left child
+
+    Case 3:
+        Only right child
+
+    Case 4:
+        Both Children
+
+    Whenever possible, minimize the height of the binary tree    
+
+    Ballenced Tree, Full Binary Tree:
+        Every Parent has 2 children
+        O( log2 n )
+
+    Linear tree: O(n)
+
+
+
+13 July
+------------------------------------------------------------------------------------------------------
+
+Depth of Tree:
+    Number of levels 
+
+Represent Binary Tree in a Computer System:
+    (1) 1 Dimensional Array
+        + Access time is constant
+        + Full binary tree/ Balanced binary tree has no wasted memory
+        - Wastes a lot of memory
+    (2) Class Node with pointer variable
+        + Memory efficient
+        - Access time is non-constant
+        
+
+    Template<class Item>
+    class binary_tree_node{
+        public:
+            // public member function
+        private:
+            Item data_field;
+            binary_tree_node *left_child;
+            binary_tree_node *right_child;
+    };        
+
+                        | left_child | data_field | right_child |
+                        |pointer_left|            |pointer_right|
+
+    | left_child | data_field | right_child |
+    |   NULL     |   data     |  NULL       |
+                                                            | left_child | data_field | right_child |
+                                                            |   NULL     |   data     |    NULL     |
+
+    To represent with an array, each term of the tree will be labeled 0, 1, 2, ... 
+                                 0
+                            1           2
+                        3      4     5     6 
+                     7    8   9 10 11 12 13 14
+    Each item will then be added to the array in order of its number
+
+    Internal Nodes have a child/children
+    Terminal Nodes have no children
+
+    **This will be on second midterm**
+    1 Dimensional Array Rules:
+    (1) The root node is placed on the compunent [0] of the array
+    (2) If a node is placed in the compunent [i] of the array,
+        then its parent node is placed in the component floor((i-1)/2)
+    (3) The left son is placed in the component [2i + 1]
+        The right son is placed in the component [2i + 2]
+
+
+
+Complete Binary Tree:
+    1) The subtree of depth k-1 is a full binary tree
+    2) Terminal nodes should be placed from left to right without vacant space
+    Note: Every terminal node in a complete binary tree should be placed on either
+          the last level or just one level above the last level
+
+    Full Binary Tree:
+        1) Every internal node has two children
+        2) Every terminal node is placed on the last level
+        3) The Total number of nodes in the full binary tree of depth k = 2^k - 1
+        4) Every full binary tree is also a complete binary tree
+
+Trees:
+    Full B.T.
+    Complete B.T.
+    Binary B.T.
+    Heap Tree
+    Huffman Tree
+    AVL
+    B-tree
+
+
+14 July
+------------------------------------------------------------------------------------------------------
+Binary Tree:
+    If binary tree is well balanced, 
+    then there is no memory waste, 
+    and the time to traverse is O(log2 (n) )
+
+Proof (by induction): Total number of nodes of a full binary tree of depth k is k = 2^k - 1
+
+    Theorem: The total number of nodes in a full binary tree of depth k is 2^k - 1
+    Lemma:   The total number of nodes in a full binary tree at level i is 2^(i-1)
+
+    Step 1: (base case) 
+        Assuming the root node is placed at level 1, the maximum number of nodes at level 1 is 1
+        if i = 1, then the lemma is true: 1 = 2^(1-1)
+    
+    Step 2: (Hypothesis)
+        Show that the total number of nodes at level n is 2^(n-1)
+
+    Step 3: (Inductive step)
+        Show that the number of nodes at the next level, (n+1), is 2^(n+1-1) = 2^n
+        The total number of nodes at the next level, (n+1), is 2^(n-1) * 2 = 2^n
+
+        2^(1-1) = 2^0 = 1    
+        2^(1-2) = 2^1 = 2    
+        2^(1-3) = 2^2 = 4    
+        2^(1-4) = 2^3 = 8    
+        ...
+
+    Conclusion:
+        The total number of nodes of depth k in the full binary tree is,
+            (number of nodes at level 1) +        
+            (number of nodes at level 2) +        
+            (number of nodes at level 3) +        
+            (number of nodes at level 4) +        
+            ...
+            (number of nodes at level k) +        
+
+            = 2^0 + 2^1 + 2^2 + 2^3 + ... + 2^k-1
+            = 2^k - 1
+
+Traverse a Binary Tree:
+    preorder traverse -> prefix notation
+        Root first, then left subtree, next right subtree, followed by each subsequent subtree starting from the left
+    inorder traverse
+        Left subtree first, then root node, then right subtree
+    postorder traverse -> postfix notation
+        Left subtree, then right subtree, then root node
+    
+
+15 July
+------------------------------------------------------------------------------------------------------
+Binary tree:
+
+    struct Binary_tree{
+        int data; // key
+        int* left_child; 
+        int* right_child; 
+    };
+
+Binary Search Tree:
+    Binary tree where each entry to the left of the root is a lower value than its root, 
+    and each value to the right is greater than its root.
+
+    When one traverses a binary search tree inorder, i.e., inorder traverse, 
+    then the outcome is in order, i.e., sorted
+
+    To find an entry, compare its value with the root node, if the root is greater, then go left,
+    if lesser, then go right... continue until the value is equal to the current node.
+
+    100, 30, 36, 200, 88, 155, 74, 3, 15
+
+    Read input, assign it to data field of node
+    root = new node;
+        NULL 100 NULL
+
+    Read next input, if NULL then create new node
+    current_node = new node;
+        NULL 30 NULL
+
+    If NULL, then repeat from first instruction
+
+    Assign the left_child pointer to the current_node
+    root->left_child = current_node;
+
+There exists a Maximum Heap Tree, and a Minimum Heap Tree
+
+Heap Tree:
+    (1) Complete Binary Tree
+    (2) Key value of root node is larger than the key value of the left subtree and right subtree,
+        each subtree is itself a heaptree
+        
+    1) Read in a value
+    2) Place it at first available location (fill from left to right)
+    3) If its value is larger than its parent, then swap, and continue swapping
+       until the swaped value is in the right place
+    
+Huffman Tree:
+    Shorter code is assigned to characters that occur more frequently.
+    Longer code is assigned to characters that occur less frequently
+
+
+16 July
+------------------------------------------------------------------------------------------------------
+Time Complexity of Binary Search is proportional to the height of the binary tree
+
+Traversal:
+    1) inorder traverse  : LVR  L:Left
+    2) preorder traverse : VLR  R:Right
+    3) postorder traverse: LRV  V:Root
+
+Maximum Heap Tree:
+    Complete Binary Tree
+    Key at the root node is the largest
+    Left subtree and right subtree are also heap trees
+    Unless specified explicitly heap tree means maximum heap tree
+
+    Height Proportional to: ceil(log2(n+1))
+
+Huffman Tree:
+    Dr. Huffman ~1950s
+    
+    Symbol| Frequency
+    _________________
+    A     | 24
+    B     | 12
+    C     | 10
+    D     | 8
+    E     | 8
+
+
+    More bits are assigned to characters that are used less frequently and
+    fewer bits are assigned to characters that are used more frequently
+
+
+    Symbol| Frequency
+    _________________
+    A     | 24
+    B     | 12
+    C     | 10
+    t1    | 16
+
+            16
+        8       8
+
+    Symbol| Frequency
+    _________________
+    A     | 24
+    t2    | 22
+    t1    | 16
+
+            16          22
+        8       8   10      16
+
+    Symbol| Frequency
+    _________________
+    A     | 24
+    t3    | 38
+
+                 38    
+
+            16          22
+        8       8   10      16
+
+    Symbol| Frequency
+    _________________
+    A     | 24
+    t3    | 38
+
+                 38    
+
+            16          22
+        8       8   10      16
+
+
+
+
+            t4
+            62
+           /  \
+        A /    \ t3
+        24       38   
+                /   \
+            t1 /     \t2
+            16        22
+           /  \       /  \ 
+          /    \     /    \
+          D      E  C      B
+          8      8  10     16
+
+    Assign the binary number like this:
+        left: 0
+        right: 1
+    
+    Symbol| Frequency | Bin
+    _______________________
+    A     | 24        | 0
+    B     | 12        | 111
+    C     | 10        | 110
+    D     | 8         | 100
+    E     | 8         | 101
+
+
+
+20 July
+------------------------------------------------------------------------------------------------------
+HW2 Due Wednesday:
+    Problem 3:
+        substr might be usefull
+        substr(1)
+    Problem 4:
+        construct heap tree binary search tree
+        IC is located in the middle of the contenent
+        
+        When a duplicate key is encountered, ignore it, i.e., ignore the second 'the'
+
+
+Start PA3 
+
+Huffman Tree:
+
+    char | freq
+    A    | 1000
+    B    | 100
+    C    | 10
+
+    char | freq
+    A    | 1000
+    t1   | 110
+
+
+        t1
+      / 10 \
+     /      \
+    B        C
+   100       10
+
+           t0
+          /1110
+         /     \
+        t1      \
+      / 10 \     A
+     /      \    1000
+    B        C
+   100       10
+
+
+Binary search tree:
+    Well balanced tree:
+        O(log2(n))
+    If not balanced
+        O(n)
+
+For exam 2:
+    Learn recursion
+    Convert and evaluate infix, prefix, postfix
+    Binary search trees( traversal )
+    Huffman Tree
+    Heap Tree
+    (b tree will not be on midterm 2, rather on final exam)
+
+m-tree: (Non-binary Tree)
+    B tree of index k
+
+    balanced tree
+
+    minimize height of tree
+    make each node keep multiple key values
+
+
+m-way (search) tree:
+    not a binary tree
+    tree where each node can have from 0 to m subtrees where m is defined as the order of the tree
+
+    Properties on slide 5 powerpoint 11
+    m corresponds to the maximum number of pointers from a node in the tree
+    k way search tree
+    k - 1 key values
+    k subtrees (pointers)
+
+    B tree is perfectly well balanced tree
+        The purpose of the B tree is to minimize the hight of the tree.
+
+    4 way search tree === B tree of order 4
+    at most:
+        4 subtrees 4-1 key values
+        except root node, every node should have at least 2 key values
+
+    Every node can be halved
+
+    B tree of order 6: every node has at most 6 pointers, 6 subtrees, 6-1 key values
+        except root node, every node has at least 6/2 key values (3)
+
+
+21 July
+------------------------------------------------------------------------------------------------------
+B-Trees
+
+Insert new value in B tree
+
+Case 1: If the terminal node has space,
+        1) simply insert the key at the proper place
+
+Case 2: If The terminal node is full,
+        1) Separate the terminal node, and create a ndw node
+        2) Half of the keys are transferred from the full terminal node
+           into the newly created node, and put the key in the old terminal node
+        3) Move the last key from the old terminal to the parent (if there is space)
+        4) Adjust the pointer to the newly created (terminal) node
+           
+Case 3: If the parent node is full:
+        1) Create a new node, move last key value into newly created node (similar to case 2)
+        2) Create a new root, using the greatest value of the left node
+        3) Adjust the pointer of parent
+
+
+22 July
+------------------------------------------------------------------------------------------------------
+Binary Search Tree:
+    
+    Hermann Hesse:
+        Sprache des Fruehlings:
+        Jedes Kind weiss was der Fruehling spricht
+
+                jedes
+                /   \
+               /     \
+             der     kind
+            /   \      \
+           /     \      \
+    spricht  fruehling  weiss
+                        /
+                       /
+                     was
+
+AVL Tree: "realativley" well balanced binary tree
+    Balance factor (n) = height of the left subtree - height of the right subtree
+
+    For AVL, n = {+1, -1, 0}
+
+    Balance factor for all subtrees must be either +1, -1, or 0
+
+Midterm 2, extra credit: Hermann Hesse: Sprache des Fruehlings
+
+HW2 Solutions:
+    Problem 1:
+        1) xy*
+        2) x y z / +
+        3) x y z / +
+        4) x y + z /
+        5) bb * 4 a * c * - 2 a * /
+        6) a b * c * d * e * f *
+
+    Problem 2:
+        1) * / a b c
+        2) + - a * b c e
+        3) * - a b + c d
+        4) + a - * b c d
+        5) - + - / a b c * d e * a c
+        6) + / * a - b c d g
+
+    Problem 3:
+        void reverse(const string s){
+            if( s.length() > 0 ){
+                reverse( s.substr(1) );
+                cout << s[0];
+            }
+        }
+        /* substr(1) gibes the substring that begins at 
+           location s[1] and continues to the end of the string */
+
+    Problem 4:
+            
+                Iowa
+             /         \ 
+         City             is
+                         /      \
+                        /        \
+                       in       located  
+                      /                 \
+             continent                   the
+                                         /
+                                     middle
+                                            \
+                                            of
+
+Exam 2 Comments:
+    B tree and recursion will NOT be on exam
+    NO infix to prefix
+
+    Full and complete binary tree
+    heap tree, BST, Huffman tree, AVL, ... etc
+    2^k - 1 total number of nodes in binary tree
+    Insert delete key from tree
+    inorder, preorder, postorder traverse
+    Store binary tree in computer system
+        1D array 
+        list
+    Convert infix to postfix, prefix
+    Understand why infix polish string notation
