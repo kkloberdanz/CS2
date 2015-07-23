@@ -802,7 +802,7 @@ Polish String Notation:
         |  )   |   |    // right paren
         |  ^   |3  |4   // exponent
         | * /  |2  |4   // multiply, divide
-        | + -  |2  |2   // add, subtract
+        | + -  |1  |2   // add, subtract
         |  (   |0  |4   // left paren
         |  #   |-1 |    // bottom of stack
 
@@ -1286,7 +1286,6 @@ Binary search tree:
         O(n)
 
 For exam 2:
-    Learn recursion
     Convert and evaluate infix, prefix, postfix
     Binary search trees( traversal )
     Huffman Tree
@@ -1419,16 +1418,95 @@ HW2 Solutions:
                                             of
 
 Exam 2 Comments:
+------------------------------------------------------------------------------------------------------
     B tree and recursion will NOT be on exam
     NO infix to prefix
 
     Full and complete binary tree
-    heap tree, BST, Huffman tree, AVL, ... etc
+        - Full: All memory locations are utilized, i.e., 
+                the tree is filled from the top, with the 
+                left subtrees filling before the right
+        - Complete: Subcategory of full, where all terminal
+                    nodes are at the same level
+
+    Binary Trees: heap tree, BST, Huffman tree, AVL, ... etc
+    - Heap: Fill from top down, left to right
+            Parent node is always greater than its children
+    - BST: Left is less than root, root is less than right 
+    - Huffman Tree: Used to assign number of bits to characters
+                    based on frequency
+    - AVL: Binary tree where the balance factor, i.e.,
+           the height of the left subtree - height of right subtree
+           of each node is either: 0, +1, -1
+
     2^k - 1 total number of nodes in binary tree
+        1 Dimensional Array Rules:
+        (1) The root node is placed on the component [0] of the array
+        (2) If a node is placed in the compunent [i] of the array,
+            then its parent node is placed in the component floor((i-1)/2)
+        (3) The left son is placed in the component [2i + 1]
+            The right son is placed in the component [2i + 2]
+
     Insert delete key from tree
+        - Heap Tree: Delete root node
+                     Make last element the new root node
+                     Swap values as needed
+        - BST: 
+            No children: Simply delete node
+            1 Child: Link the parent of the node to be deleted to 
+                     the child. Delete the node.
+            2 Children: Replace the node to be deleted with the least 
+                        value of the right subtree, delete the lowest value
+
     inorder, preorder, postorder traverse
+        preorder: Root, Left, Right
+        inorder: Left, Root, Right
+        postorder: Left, Right, Root
+   
     Store binary tree in computer system
         1D array 
         list
-    Convert infix to postfix, prefix
+
+    Convert infix to postfix
+        - To convert:
+          symbol | ISP | ICP
+          --------------------
+          )      |  3  |  4
+          ^      |     |
+          --------------------
+          *      |  2  |  2
+          /      |     |
+          --------------------
+          +      |  1  |  1
+          -      |     |
+          --------------------
+          (      |  0  |  4
+          --------------------
+          #      | -1  |
+
+          Read symbol a
+          while string is not empty:
+              check a:
+                  if a is operand, print a
+                  if a is ')', pop and print from stack until '('
+                  if a is operator or '(':
+                      if ISP(stack.top()) >= ICP(a):
+                          while ISP(stack.top()) >= ICP(a) AND stack not empty:
+                              print stack.pop()
+                          stack.push()
+                      else: push a onto stack
+          // string empty
+          while stack is not emtpy:
+              print stack.pop()                
+
+        - To Evaluate:
+          While postfix string is not empty:
+              if a is operand, push a onto stack
+              if a is operator, pop 2 items from stack
+                  evaluate the poped items( order poped: right, left )
+                  push result onto stack
+
     Understand why infix polish string notation
+        - Less ambiguity
+        - Parentheses are not needed
+------------------------------------------------------------------------------------------------------
