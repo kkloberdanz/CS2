@@ -1,0 +1,173 @@
+#include <iostream>
+#define SIZE_OF_INT 16
+#define SIZE 10
+
+using namespace std;
+
+
+
+class Linked_list{
+    private:
+        int vertex;
+        int successor;
+        int count;
+        Linked_list* next;
+    public:
+        // Constructor
+        Linked_list();
+
+        // void member functions
+        void insert(int, int);
+        void printList(); 
+        void decrement_count() { count--; }
+        void topological_sort(Linked_list*);
+        void remove_vertex();
+
+        // getters and setters
+        int getCount() { return count; }
+        void setCount(int n) { count = n; }
+        int getVertex() { return vertex; }
+        void setVertex(int v) { vertex = v; }
+};
+
+// implementation
+Linked_list::Linked_list(){
+    vertex = 0;
+    successor = 0;
+    count = 0;
+    next = NULL;
+}
+
+
+void Linked_list::insert(int v, int s){
+    Linked_list* currentNode = this;
+
+    // ensures that insertion takes place at the end of the list
+    while( currentNode->next != NULL ){
+        currentNode = currentNode->next;
+    }
+
+    currentNode->vertex = v;
+    currentNode->successor = s;
+    currentNode->next = new Linked_list;
+
+    // advances the current Linked_list to next Linked_list
+    currentNode = currentNode->next;
+
+    // assigns the pointer "next" for the newly created Linked_list to NULL
+    currentNode->next = NULL;
+}
+
+
+void Linked_list::printList(){
+    Linked_list* currentNode = this;
+
+    while( currentNode->next != NULL ){
+        cout << "(" << currentNode->vertex << ", " << currentNode->successor << ")" << endl;
+        currentNode = currentNode->next;
+    }
+}
+
+void Linked_list::remove_vertex(){
+    Linked_list* current_vertex = this;
+    current_vertex->vertex = -1;
+    current_vertex->count = -1;
+    current_vertex->successor = -2;
+    current_vertex->next = NULL;
+}
+
+/*
+ * Find a vertex that has a counter field of 0 (zero)
+ * Output the vertex whose count is 0
+ * Decrease the counter field by 1 of the vertex that the link field points to
+ * remove the vertex
+ * Continue untill all verteces are gone
+ */
+
+void Linked_list::topological_sort(Linked_list v[]){
+    cout << "Entered topsort function" << endl;
+    int i;
+    bool zero_found = false;
+    Linked_list current_list;
+    v[1].printList();
+
+    for( i = 1; i < SIZE; i++ ){
+        cout << "Entered for loop" << endl;
+        if( v[i].getCount() == 0 ){
+            zero_found = true;
+            current_list = v[i];
+        }
+    }
+
+    if( zero_found ){
+        // loop until the entire list has been traversed
+        while( current_list.next != NULL ){
+            cout << current_list.getVertex() << endl;         
+
+            // decrement the count of the item that is linked by 1
+            current_list.next->decrement_count();
+            current_list.remove_vertex();
+        }
+    } else {
+        return;
+    }
+    // recursivly call this function until there are no more zeros
+    v->topological_sort(v);
+}
+
+int main(){
+
+    Linked_list vertex[SIZE];
+
+    vertex[1].insert(1, 3);
+    vertex[1].setCount(0);
+
+    vertex[2].insert(2, 8);
+    vertex[2].setCount(1);
+
+    vertex[3].insert(3, 7);
+    vertex[3].setCount(1);
+
+    vertex[4].insert(4, 6);
+    vertex[4].setCount(1);
+
+    vertex[5].insert(5, 8);
+    vertex[5].setCount(2);
+
+    vertex[7].insert(7, 4);
+    vertex[7].insert(7, 5);
+    vertex[7].setCount(1);
+
+    vertex[8].insert(8, 6);
+    vertex[8].setCount(2);
+
+    vertex[9].insert(9, 2);
+    vertex[9].insert(9, 5);
+    vertex[9].setCount(0);
+
+    cout << "The following verteces are: " << endl;
+
+    int i;
+    for( i = 1; i < SIZE; i++ ){
+        cout << "vertex " << i << endl;
+        vertex[i].printList();
+        cout << endl;
+    }
+    //cout << sizeof(vertex) << endl;
+
+    vertex->topological_sort(vertex);
+
+
+    /*
+    // For testing the linked list
+    Linked_list* myList = new Linked_list;
+    myList->insert(1, 3);
+    myList->insert(3, 7);
+    myList->insert(7, 5);
+    myList->insert(5, 8);
+
+    myList->printList();
+    delete myList;
+    */
+    return 0;
+}
