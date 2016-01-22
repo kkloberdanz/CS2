@@ -9,14 +9,21 @@ class BST_node{
         BST_node *right_child;
     public:
         BST_node();
+        ~BST_node();
         void make_BST(string);
         void insert(string);
         void inorder_traverse();
+        void destroy();
 };
 
 BST_node::BST_node(){
     BST_node* left_child = NULL;
     BST_node* right_child = NULL;
+    string key_field = "";
+}
+
+BST_node::~BST_node(){
+    this->destroy();
 }
 
 void BST_node::make_BST(string text){
@@ -36,8 +43,6 @@ void BST_node::make_BST(string text){
     }
     current_node->insert(word);
 }
-
-
 
 void BST_node::insert(string word){
     BST_node* current_node = this;
@@ -82,6 +87,15 @@ void BST_node::inorder_traverse(){
     }
 }
 
+void BST_node::destroy() {
+    BST_node* current_node = this;
+    if( current_node != 0 ) {
+        current_node->left_child->destroy(); 
+        current_node->right_child->destroy(); 
+        delete current_node;  
+    }
+}
+
 int main(){
 
     BST_node* tree = new BST_node;
@@ -93,5 +107,6 @@ int main(){
 
     cout << "Inorder traverse: ";
     tree->inorder_traverse();
+    tree->destroy();
     return 0;
 }
