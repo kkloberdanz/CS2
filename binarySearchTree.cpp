@@ -107,6 +107,6 @@ int main(){
 
     cout << "Inorder traverse: ";
     tree->inorder_traverse();
-    tree->destroy();
+    //tree->destroy();
     return 0;
 }
